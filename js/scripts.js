@@ -1,4 +1,4 @@
-function Pizza(size, delivery) {
+function Pizza(size, meats, cheeses, veggies, delivery) {
   this.size = size,
   this.meats = [],
   this.cheeses = [],
@@ -7,21 +7,12 @@ function Pizza(size, delivery) {
   this.price = 0
 }
 
-Pizza.prototype.orderUp = function(size, delivery) {
+Pizza.prototype.orderUp = function(size, meats, cheeses, veggies, delivery) {
   console.log(this.price);
-  var veggies = this.veggies;
   var meats = this.meats;
   var cheeses = this.cheeses;
-  veggies.forEach(function(veggie) {
-    this.price += 1;
-    console.log(this.price);
-  });
-  meats.forEach(function(meat) {
-    this.price += 2;
-  });
-  cheeses.forEach(function(cheese) {
-    this.price += 1;
-  });
+  var veggies = this.veggies;
+  console.log(newPizza);
   if (size === "small"){
     this.price += 7
   } else if (size === "regular") {
@@ -31,13 +22,20 @@ Pizza.prototype.orderUp = function(size, delivery) {
   } else {
     alert("Please Pick a Size.")
   }
-  if (delivery === "delivery") {
-    this.price += 5
-  } else {
-    return this.price;
+  console.log(this.price);
+  this.price += (meats.length * 1.50);
+  this.price += (cheeses.length * 1);
+  this.price += (veggies.length * .50);
+  console.log(cheeses);
+  console.log(newPizza);
+  console.log(this.price);
+    if (delivery === "delivery") {
+      this.price += 5;
+    } else {
+      this.price += 0;
+    }
     console.log(this.price);
-
-  }
+  return this.price;
 }
 
 var newPizza = new Pizza ()
