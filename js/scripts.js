@@ -25,16 +25,16 @@ Orders.prototype.pickPizza = function(id) {
   return false;
 }
 
-// Orders.prototype.tossPizza = function(id) {
-//   for(var i = 0; i < this.pizzaPie.length; i++) {
-//     if (this.pizzaPie[i]) {
-//       if (this.pizzaPie[i].id == id) {
-//         delete this.pizzaPie[i];
-//       }
-//     }
-//   };
-//   return false;
-// }
+Orders.prototype.tossPizza = function(id) {
+  for(var i = 0; i < this.pizzaPie.length; i++) {
+    if (this.pizzaPie[i]) {
+      if (this.pizzaPie[i].id == id) {
+        delete this.pizzaPie[i];
+      }
+    }
+  };
+  return false;
+}
 
 
 
@@ -78,8 +78,10 @@ Pizza.prototype.orderUp = function(size, meats, cheeses, veggies, delivery) {
   return this.price;
 }
 
+var orderTime = new Orders();
+
 function displayCurrentOrder(pizzaPiesOrdered) {
-  var pizzaList = $("ul#pizzasOrdered");
+  var pizzaList = $("ol#pizzasOrdered");
   var htmlForPizzaInfo = "";
   pizzaPiesOrdered.pizzaPie.forEach(function(pizza) {
     htmlForPizzaInfo += "<li id=" + pizza.id + ">" + pizza.size + " |" + "Meats: " + pizza.meats.length + " |" + "Cheeses: " + pizza.cheeses.length + " |" + "Veggies: " + pizza.cheeses.length + " |" + "$" + pizza.price + "</li>"
@@ -87,12 +89,61 @@ function displayCurrentOrder(pizzaPiesOrdered) {
   pizzaList.html(htmlForPizzaInfo)
 };
 
-var orderTime = new Orders();
-// var newPizza =  Pizza();
+function seePizza(pizzaId) {
+  console.log("HERE!")
+  var seeThisPizza = orderTime.pickPizza(pizzaId);
+  var meatList = $("ul#meatDetails");
+  var htmlForMeat = "";
+  var cheeseList = $("ul#cheeseDetails");
+  var htmlForCheese = "";
+  var veggieList = $("ul#veggieDetails");
+  var htmlForVeggie = "";
+  $(".pizzaDetails").show();
+  $("#pizzaSizeDetails").html(seeThisPizza.size);
+console.log(pizzaId.length);
+  console.log(orderTime.pizzaPie.length);
+  console.log(seeThisPizza.length);
+
+for (i = 0; i < seeThisPizza.meats.length; i++) {
+      console.log(seeThisPizza.meats.length);
+      console.log(seeThisPizza.meats[i]);
+        htmlForMeat += "<li>" + seeThisPizza.meats[i] + "</li>"
+      meatList.html(htmlForMeat);
+}
+
+for (i = 0; i < seeThisPizza.cheeses.length; i++) {
+      console.log(seeThisPizza.cheeses.length);
+      console.log(seeThisPizza.cheeses[i]);
+        htmlForCheese += "<li>" + seeThisPizza.cheeses[i] + "</li>"
+      cheeseList.html(htmlForCheese);
+}
+
+for (i = 0; i < seeThisPizza.veggies.length; i++) {
+      console.log(seeThisPizza.veggies.length);
+      console.log(seeThisPizza.veggies[i]);
+        htmlForVeggie += "<li>" + seeThisPizza.veggies[i] + "</li>"
+      veggieList.html(htmlForVeggie);
+}
 
 
+
+  $("#pizzaPirceDetails").html(seeThisPizza.price);
+}
+
+function attachListeners() {
+  $("ol#pizzasOrdered").on("click", "li", function() {
+    seePizza(this.id);
+    // removeEmpty(this.id);
+  });
+  $("#deleteButton").on("click", ".deleteButton", function() {
+    orderTime.tossPizza(this.id);
+    $(".pizzaDetails").hide();
+    displayCurrentOrder(orderTime);
+  });
+};
 
 $(document).ready(function() {
+  attachListeners();
   $("form#order").submit(function(event) {
     event.preventDefault();
     var meatsPicked = [];

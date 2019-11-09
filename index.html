@@ -16,69 +16,95 @@
       <img src="" alt="Pizza Planet entrance with robot guards.">
     </div>
     <div class="welcomeIn">
-      <form id="order">
-        <div class="sizeOption">
-          <h4>Size</h4>
-          <select class="form-control" id="size">
-            <option value="small">Small</option>
-            <option value="regular">Regular</option>
-            <option value="jumbo">Jumbo</option>
-          </select>
+      <div class="row">
+        <div class="col-sm-7">
+          <form id="order">
+            <div class="sizeOption">
+              <h4>Size</h4>
+              <select class="form-control" id="size">
+                <option value="small">Small</option>
+                <option value="regular">Regular</option>
+                <option value="jumbo">Jumbo</option>
+              </select>
+
+            </div>
+            <h4>Cheese Options:</h4>
+            <div class="cheeseChoices">
+              <label class="checkbox-inline">Gorgonzola</label>
+              <input type="checkbox" name="cheeseType" value="gorgonzola">
+              <label class="checkbox-inline">Chevre</label>
+              <input type="checkbox" name="cheeseType" value="chevre">
+              <label class="checkbox-inline">Feta</label>
+              <input type="checkbox" name="cheeseType" value="feta">
+              <label class="checkbox-inline">Parmesan</label>
+              <input type="checkbox" name="cheeseType" value="parmesan">
+              <label class="checkbox-inline">Vegan</label>
+              <span id="veganNote">Selecting this option will mean the base mozzerella cheese is replace with vegan Daiya cheese.</span>
+              <input type="checkbox" name="cheeseType" value="vegan">
+            </div>
+            <div class="meatChoices">
+              <h4>Meat Choices:</h4>
+              <label class="checkbox-inline">Pepperoni</label>
+              <input type="checkbox" name="meatType" value="pepperoni">
+              <label class="checkbox-inline">Italian Sausage</label>
+              <input type="checkbox" name="meatType" value="italian sausage">
+              <label class="checkbox-inline">Canadian Bacon</label>
+              <input type="checkbox" name="meatType" value="canadian bacon">
+            </div>
+            <div class="veggieChoices">
+              <h4>Veggie Choices:</h4>
+              <label class="checkbox-inline">Sundried Tomatoes</label>
+              <input type="checkbox" name="veggieType" value="sundried tomatoes">
+              <label class="checkbox-inline">Mushrooms</label>
+              <input type="checkbox" name="veggieType" value="mushrooms">
+              <label class="checkbox-inline">Arugala</label>
+              <input type="checkbox" name="veggieType" value="arugala">
+              <label class="checkbox-inline">Black Olives</label>
+              <input type="checkbox" name="veggieType" value="black olives">
+              <label class="checkbox-inline">Artichoke Hearts</label>
+              <input type="checkbox" name="veggieType" value="artichoke hearts">
+            </div>
+            <div class="pickUpDelivery">
+              <h4>Pick Up or Delivery?</h4>
+              <select class="form-control" id="orderType">
+                <option value="pickUp">I'll Come Pick-Up My Order</option>
+                <option value="delivery">I'd Like My Order Delivered</option>
+              </select>
+            </div>
+              <button type="submit">Place Order</button>
+          </form>
+        </div>
+        <div class="col-sm-5">
+          <div class="currentOrders">
+            <div class="jumbotron">
+              <h3>Current Orders</h3>
+            </div>
+            <ol id="pizzasOrdered">
+
+            </ol>
+            <div class="pizzaDetails">
+              <p id="pizzaSizeDetails"></p>
+              <ul id="meatDetails">
+
+              </ul>
+              <ul id="cheeseDetails">
+
+              </ul>
+              <ul id="veggieDetails">
+
+              </ul>
+              <p id="pizzaPriceDetails"></p>
+                <div id="deleteButton">
+
+                </div>
+            </div>
+
+          </div>
 
         </div>
-        <h4>Cheese Options:</h4>
-        <div class="cheeseChoices">
-          <label class="checkbox-inline">Gorgonzola</label>
-          <input type="checkbox" name="cheeseType" value="gorgonzola">
-          <label class="checkbox-inline">Chevre</label>
-          <input type="checkbox" name="cheeseType" value="chevre">
-          <label class="checkbox-inline">Feta</label>
-          <input type="checkbox" name="cheeseType" value="feta">
-          <label class="checkbox-inline">Parmesan</label>
-          <input type="checkbox" name="cheeseType" value="parmesan">
-          <label class="checkbox-inline">Vegan</label>
-          <span id="veganNote">Selecting this option will mean the base mozzerella cheese is replace with vegan Daiya cheese.</span>
-          <input type="checkbox" name="cheeseType" value="vegan">
-        </div>
-        <div class="meatChoices">
-          <h4>Meat Choices:</h4>
-          <label class="checkbox-inline">Pepperoni</label>
-          <input type="checkbox" name="meatType" value="pepperoni">
-          <label class="checkbox-inline">Italian Sausage</label>
-          <input type="checkbox" name="meatType" value="italian sausage">
-          <label class="checkbox-inline">Canadian Bacon</label>
-          <input type="checkbox" name="meatType" value="canadian bacon">
-        </div>
-        <div class="veggieChoices">
-          <h4>Veggie Choices:</h4>
-          <label class="checkbox-inline">Sundried Tomatoes</label>
-          <input type="checkbox" name="veggieType" value="sundried tomatoes">
-          <label class="checkbox-inline">Mushrooms</label>
-          <input type="checkbox" name="veggieType" value="mushrooms">
-          <label class="checkbox-inline">Arugala</label>
-          <input type="checkbox" name="veggieType" value="arugala">
-          <label class="checkbox-inline">Black Olives</label>
-          <input type="checkbox" name="veggieType" value="black olives">
-          <label class="checkbox-inline">Artichoke Hearts</label>
-          <input type="checkbox" name="veggieType" value="artichoke hearts">
-        </div>
-        <div class="pickUpDelivery">
-          <h4>Pick Up or Delivery?</h4>
-          <select class="form-control" id="orderType">
-            <option value="pickUp">I'll Come Pick-Up My Order</option>
-            <option value="delivery">I'd Like My Order Delivered</option>
-          </select>
-        </div>
-          <button type="submit">Place Order</button>
-      </form>
-
+      </div>
     </div>
-    <div class="currentOrders">
-      <ul id="pizzasOrdered">
 
-      </ul>
-
-    </div>
 
 
   </div>
