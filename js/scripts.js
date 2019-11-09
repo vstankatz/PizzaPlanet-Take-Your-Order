@@ -40,9 +40,9 @@ Orders.prototype.pickPizza = function(id) {
 
 function Pizza(size, meats, cheeses, veggies, delivery) {
   this.size = size,
-  this.meats = [],
-  this.cheeses = [],
-  this.veggies = [],
+  this.meats = meats,
+  this.cheeses = cheeses,
+  this.veggies = veggies,
   this.delivery = delivery,
   this.price = 0
 }
@@ -80,10 +80,9 @@ Pizza.prototype.orderUp = function(size, meats, cheeses, veggies, delivery) {
 
 function displayCurrentOrder(pizzaPiesOrdered) {
   var pizzaList = $("ul#pizzasOrdered");
-  var pizzaSize = this.size.value;
   var htmlForPizzaInfo = "";
   pizzaPiesOrdered.pizzaPie.forEach(function(pizza) {
-    htmlForPizzaInfo += "<li id=" + pizza.id + ">" + pizzaSize + " |" + "Meats: " + pizza.meats.length + " |" + "Cheeses: " + pizza.cheeses.length + " |" + "Veggies: " + pizza.cheeses.length + " |" + "$" + pizza.price + "</li>"
+    htmlForPizzaInfo += "<li id=" + pizza.id + ">" + pizza.size + " |" + "Meats: " + pizza.meats.length + " |" + "Cheeses: " + pizza.cheeses.length + " |" + "Veggies: " + pizza.cheeses.length + " |" + "$" + pizza.price + "</li>"
   });
   pizzaList.html(htmlForPizzaInfo)
 };
@@ -96,38 +95,36 @@ var orderTime = new Orders();
 $(document).ready(function() {
   $("form#order").submit(function(event) {
     event.preventDefault();
-    var meatsPickedArray = [];
-    var cheesesPickedArray = [];
-    var veggiesPickedArray = [];
+    var meatsPicked = [];
+    var cheesesPicked = [];
+    var veggiesPicked = [];
     var inputSize = $("select#size").val();
     var inputMeats = $("input:checkbox[name=meatType]:checked").each(function() {
       var inputMeat = $(this).val();
-      meatsPickedArray.push(inputMeat);
+      meatsPicked.push(inputMeat);
     });
     var inputCheeses = $("input:checkbox[name=cheeseType]:checked").each(function() {
       var inputCheese = $(this).val();
-      cheesesPickedArray.push(inputCheese);
+      cheesesPicked.push(inputCheese);
     });
     var inputVeggies = $("input:checkbox[name=veggieType]:checked").each(function() {
       var inputVeggie = $(this).val();
-      veggiesPickedArray.push(inputVeggie);
+      veggiesPicked.push(inputVeggie);
     });
     var inputDelivery = $("select#orderType").val();
 
     $("input[type=checkbox]").prop("checked", false);
 
-    // var sizeText = inputSize.value;
+    var sizeText = inputSize.value;
     var orderType = inputDelivery.value;
-    var meatsPicked = meatsPickedArray.toString();
-    console.log(meatsPicked);
-    var cheesesPicked = cheesesPickedArray.toString();
-    var veggiesPicked = veggiesPickedArray.toString();
 
     var newPizza = new Pizza(inputSize, meatsPicked, cheesesPicked, veggiesPicked, inputDelivery);
+    console.log(cheesesPicked);
 
     newPizza.orderUp(inputSize, meatsPicked, cheesesPicked, veggiesPicked, inputDelivery);
-
     console.log(veggiesPicked);
+    console.log(meatsPicked);
+
     orderTime.addPizza(newPizza);
     displayCurrentOrder(orderTime);
 
