@@ -127,7 +127,10 @@ for (i = 0; i < seeThisPizza.veggies.length; i++) {
 
 
 
-  $("#pizzaPirceDetails").html(seeThisPizza.price);
+  $("#pizzaPriceDetails").html(seeThisPizza.price);
+  var deleteButton = $("#deleteButton");
+  deleteButton.empty();
+  deleteButton.append("<button class='deleteButton' id=" + seeThisPizza.id + ">Delete</button>");
 }
 
 function attachListeners() {
