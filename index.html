@@ -11,13 +11,16 @@
   <title>Pizza Planet</title>
 </head>
 <body>
-  <div class="container">
-    <div class="landing">
-      <img src="" alt="Pizza Planet entrance with robot guards.">
+    <div class="landing" id="enter">
+      <div class="enter">
+        <h4>ENTER!</h4>
+      </div>
     </div>
+    <div class="container">
     <div class="welcomeIn">
       <div class="row">
         <div class="col-sm-7">
+          <div class="orderForm">
           <form id="order">
             <div class="sizeOption">
               <h4>Size</h4>
@@ -38,9 +41,10 @@
               <input type="checkbox" name="cheeseType" value="feta">
               <label class="checkbox-inline">Parmesan</label>
               <input type="checkbox" name="cheeseType" value="parmesan">
-              <label class="checkbox-inline">Vegan</label>
-              <span id="veganNote">Selecting this option will mean the base mozzerella cheese is replace with vegan Daiya cheese.</span>
+              <label class="checkbox-inline">Vegan<p id="veganNote">Selecting this option will <br> mean the base mozzerella <br> cheese is replaced with <br> vegan Daiya cheese.</p></label>
+
               <input type="checkbox" name="cheeseType" value="vegan">
+
             </div>
             <div class="meatChoices">
               <h4>Meat Choices:</h4>
@@ -64,46 +68,120 @@
               <label class="checkbox-inline">Artichoke Hearts</label>
               <input type="checkbox" name="veggieType" value="artichoke hearts">
             </div>
-            <div class="pickUpDelivery">
-              <h4>Pick Up or Delivery?</h4>
-              <select class="form-control" id="orderType">
-                <option value="pickUp">I'll Come Pick-Up My Order</option>
-                <option value="delivery">I'd Like My Order Delivered</option>
-              </select>
-            </div>
-              <button type="submit">Place Order</button>
+              <button type="submit" id="pizzaSave">Save Pizza</button>
           </form>
-        </div>
-        <div class="col-sm-5">
-          <div class="currentOrders">
-            <div class="jumbotron">
-              <h3>Current Orders</h3>
-            </div>
-            <ol id="pizzasOrdered">
+          </div>
+          <div class="pizzaDetails">
+            <h3>Pizza Details</h3>
+            <h5>Size:</h5>
+            <p id="pizzaSizeDetails"></p>
+            <h5>Meats: </h5>
+            <ul id="meatDetails">
 
-            </ol>
-            <div class="pizzaDetails">
-              <p id="pizzaSizeDetails"></p>
-              <h5>Meats: </h5>
-              <ul id="meatDetails">
+            </ul>
+            <h5>Cheeses:</h5>
+            <ul id="cheeseDetails">
 
-              </ul>
-              <h5>Cheeses:</h5>
-              <ul id="cheeseDetails">
+            </ul>
+            <h5>Veggies: </h5>
+            <ul id="veggieDetails">
 
-              </ul>
-              <h5>Veggies: </h5>
-              <ul id="veggieDetails">
-
-              </ul>
-              <p>Pizza Total: $<span id="pizzaPriceDetails"></span></p>
-                <div id="deleteButton">
-
-                </div>
-            </div>
-
+            </ul>
+            <p id="thisPrice">Pizza Total: $<span id="pizzaPriceDetails"></span></p>
+              <div id="deleteButton"></div>
           </div>
 
+      </div>
+
+
+        <div class="col-sm-5">
+          <div class="orderSection">
+            <div class="jumbotron">
+              <h3>Current Order</h3>
+            </div>
+
+            <section class="currentOrders">
+              <ol id="pizzasOrdered">
+
+              </ol>
+            </section>
+          </div>
+          <div class="price">
+            <div class="priceSection">
+            </div>
+            <div class="priceList">
+              <ul id="priceSubtotal" class="list-inline">
+              </ul>
+            </div>
+            <div class="subtotal"><span id="subtotal"></span>
+            </div>
+            <div class="continueButton">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="checkout">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title">How would you like to get your pizza?</h2>
+            <button type="button" class="close" id="modal1" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <form id="checkout">
+              <div class="pickUpDelivery">
+                <h4>Pick Up or Delivery?</h4>
+                <select class="form-control" id="orderType">
+                  <option value="pickUp">I'll Come Pick-Up My Order</option>
+                  <option value="delivery">I'd Like My Order Delivered</option>
+                </select>
+                <p id="deliveryFee">A $5 fee will be applied to delivery orders.</p>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit">Continue</button>
+
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal" id="receipt">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title">Please Confirm Your Order</h2>
+            <button type="button" class="close" id="modal2" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <ul id="allPizzas">
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <div class="priceTotal">Total | $ <span id="priceTotal"></span>
+            </div>
+            <button type="button" id="finishOrder">Submit Order</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="orderComplete">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title">Your Order is Complete!</h2>
+          </div>
+          <div class="modal-body">
+            <p>Your order should be ready in 30 minutes or less, if you need to make any changes or need to get in touch with us please call (555)-555-5555.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="restartOrder">Close</button>
+          </div>
         </div>
       </div>
     </div>

@@ -1,3 +1,123 @@
+body {
+  align-items: center;
+}
+
+.landing {
+height: 40em;
+background-size: contain;
+background-repeat: no-repeat;
+background-image: url("img/pizza-planet.jpg");
+background-position: center;
+background-color: black;
+}
+
+.enter {
+  position: absolute;
+  text-align: center;
+  background-color: gray;
+  font-weight: bold;
+  width: 150px;
+  height: 45px;
+  margin-left: 45%;
+  margin-bottom: 45%;
+}
+
+.welcomeIn {
+  display: none;
+}
+
+.orderForm {
+  margin: auto;
+}
+
+#pizzaSave {
+margin-top: 10px;
+margin-left: 40%;
+}
+
+.pizzaDetails {
+margin-top: 30px;
+align-content: center;
+background-color: #ffb3b3;
+}
+
+.pizzaDetails h3 {
+  text-align: center;
+}
+.pizzaDetails p {
+  margin-left: 60px;
+}
+
+.pizzaDetails h5 {
+margin-left: 50px;
+font-weight: bold;
+}
+
+.pizzaDetails ul {
+  margin-left: 56px;
+}
+
+#thisPrice {
+margin-left: 40%;
+font-weight: bold;
+}
+
+#deleteButton {
+  margin-left: 80%;
+}
+
+#veganNote {
+  font-size: 6px;
+  font-style: italic;
+  line-height: 1.1em;
+}
+
+.jumbotron {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+
+}
+
+.currentOrders {
+  max-height: 20em;
+  overflow: auto;
+}
+
+
 .pizzaDetails {
   display: none;
+}
+
+#priceSubtotal {
+  list-style-type: none;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  width: auto;
+  height: auto;
+  overflow-y: auto;
+  margin-left: auto;
+}
+
+ #deliveryFee {
+  color: grey;
+  font-style: italic;
+  font-size: 8px;
+}
+
+.priceTotal {
+  display: block;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  font-weight: bold;
+  color: red;
+
+}
+
+.price {
+  text-align: center;
 }
