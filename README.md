@@ -18,7 +18,7 @@ _This program was designed to allow someone to order a pizza using object constr
 
 ## Setup-Installation Requirements
 
-* _https://vstankatz.github.io/pizza-planet/_
+* _https://vstankatz.github.io/PizzaPlanet-Take-Your-Order/_
 * _Click the enter button on the landing page._
 * _Fill out the order form as desired._
 * _Click "Save Pizza"._
